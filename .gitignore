@@ -25,10 +25,6 @@ env/
 .coverage
 htmlcov/
 
-# Project specific
-screenshots/*.png
-reports/*.html
-reports/*.xml
 
 # OS
 .DS_Store
