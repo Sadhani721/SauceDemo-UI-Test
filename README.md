@@ -166,6 +166,7 @@ The framework uses Chrome browser in headless mode by default:
 - Headless mode enabled
 - Implicit wait: 2 seconds
 - Auto-screenshot on failure
+- **Automation detection suppressed** - Chrome will not display "controlled by automated software" warnings
 
 Pytest Configuration (pytest.ini)
 ```ini
