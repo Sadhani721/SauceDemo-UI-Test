@@ -21,4 +21,3 @@ class LoginPage(BasePage):
 
     def get_error_message(self):
         return self.wait_for_visible(self.ERROR_MSG).text
-

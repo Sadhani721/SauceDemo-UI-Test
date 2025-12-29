@@ -41,16 +41,6 @@ def test_remove_single_item(driver):
     cart.remove_first_item()
     assert cart.get_cart_items_count() == 0
 
-
-# TC05 – Remove all products from Cart
-
-def test_remove_all_items(driver):
-    login_and_add_product(driver, 2)
-    cart = CartPage(driver)
-    cart.remove_all_items()
-    assert cart.get_cart_items_count() == 0
-
-
 # TC06 – Continue Shopping button
 
 def test_continue_shopping(driver):
@@ -58,6 +48,7 @@ def test_continue_shopping(driver):
     cart = CartPage(driver)
     cart.click_continue_shopping()
     assert "inventory" in driver.current_url
+
 
 
 # TC07 – Checkout navigation

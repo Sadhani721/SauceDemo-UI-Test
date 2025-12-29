@@ -16,12 +16,11 @@ def test_positive_purchase_flow(driver):
 
     products.go_to_cart()
     cart = CartPage(driver)
-    cart.proceed_to_checkout()
+    cart.click_checkout()
 
     checkout = CheckoutPage(driver)
-    checkout.fill_checkout_info()
-    checkout.finish_checkout()
+    checkout.fill_checkout_info("John", "Doe", "12345")
+    checkout.click_finish()
 
-    assert checkout.get_success_message() == "THANK YOU FOR YOUR ORDER"
+    assert checkout.get_success_message() == "Thank you for your order!"
 
-    products.logout()

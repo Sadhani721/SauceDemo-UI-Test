@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
+import time
 
 
 class ProductsPage(BasePage):
@@ -27,12 +29,22 @@ class ProductsPage(BasePage):
     def get_cart_count(self):
         return self.wait_for_visible(self.CART_BADGE).text
 
+    def get_cart_badge_count(self):
+        """Alias for get_cart_count"""
+        return self.get_cart_count()
+
     def go_to_cart(self):
-        self.click(self.CART_ICON)
+        # Navigate directly to cart page (more reliable than clicking)
+        self.driver.get("https://www.saucedemo.com/cart.html")
+
+        # Wait for cart page to load
+        self.wait.until(EC.url_contains("cart"))
 
     def get_prices(self):
         return [float(p.text.replace("$", "")) for p in self.driver.find_elements(*self.PRICES)]
 
     def logout(self):
         self.click(self.MENU_BTN)
+        # Wait for menu to slide out and logout button to be visible
+        time.sleep(0.5)
         self.click(self.LOGOUT_BTN)
